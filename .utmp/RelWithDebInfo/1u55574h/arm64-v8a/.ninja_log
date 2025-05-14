@@ -1,0 +1,12 @@
+# ninja log v5
+43	459	7654108010853801	FramePacing/CMakeFiles/swappywrapper.dir/UnitySwappyWrapper.cpp.o	5534a58014684ce0
+461	593	7654108012238650	C:/Users/T-GAMER/Projetos/Bruxaria/Bruxaria/Library/Bee/Android/Prj/IL2CPP/Gradle/unityLibrary/build/intermediates/cxx/RelWithDebInfo/1u55574h/obj/arm64-v8a/libswappywrapper.so	4ed86a7645619848
+24	907	7654108015314748	GameActivity/CMakeFiles/game.dir/UGAInputKeyEvent.cpp.o	dee85a992a54011b
+19	947	7654108015717849	GameActivity/CMakeFiles/game.dir/UGAEntry.cpp.o	b38243bcafe6b04f
+36	955	7654108015777870	GameActivity/CMakeFiles/game.dir/UGAInputMotionEvent.cpp.o	a6df9335cdb761b5
+10	960	7654108015847882	GameActivity/CMakeFiles/game.dir/UGAConfiguration.cpp.o	3e62a0791130d42d
+29	1006	7654108016261166	GameActivity/CMakeFiles/game.dir/UGASoftKeyboard.cpp.o	1e1f772d2570a683
+1	1055	7654108016774713	GameActivity/CMakeFiles/game.dir/UGADebug.cpp.o	cec0708e0b63ef60
+15	1158	7654108017860156	GameActivity/CMakeFiles/game.dir/UGAInput.cpp.o	20925c212d64a9fa
+6	1220	7654108018498063	GameActivity/CMakeFiles/game.dir/UGAApplication.cpp.o	2400990672537db3
+1220	1297	7654108019291089	C:/Users/T-GAMER/Projetos/Bruxaria/Bruxaria/Library/Bee/Android/Prj/IL2CPP/Gradle/unityLibrary/build/intermediates/cxx/RelWithDebInfo/1u55574h/obj/arm64-v8a/libgame.so	7fe6acd839202a19

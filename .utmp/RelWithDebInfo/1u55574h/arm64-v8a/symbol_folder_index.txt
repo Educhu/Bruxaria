@@ -1,0 +1,1 @@
+C:\Users\T-GAMER\Projetos\Bruxaria\Bruxaria\Library\Bee\Android\Prj\IL2CPP\Gradle\unityLibrary\build\intermediates\cxx\RelWithDebInfo\1u55574h\obj\arm64-v8a
