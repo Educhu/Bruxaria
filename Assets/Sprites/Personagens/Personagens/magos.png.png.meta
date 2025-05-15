@@ -262,7 +262,10 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      magos.png_0: -4850900704365624696
+      magos.png_1: -564000672771986275
+      magos.png_2: 3077283395439303264
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

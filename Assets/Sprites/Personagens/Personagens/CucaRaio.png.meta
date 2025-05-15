@@ -262,7 +262,10 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      CucaRaio_0: -8935381329579868821
+      CucaRaio_1: -2235406781856420080
+      CucaRaio_2: 1723783918360795744
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

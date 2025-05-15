@@ -33,6 +33,15 @@ public class SpellCasting : MonoBehaviour
         spellText.text = currentInput.ToString();
     }
 
+    public void RemoveLastLetter()
+    {
+        if (currentInput.Length > 0)
+        {
+            currentInput.Remove(currentInput.Length - 1, 1);
+            spellText.text = currentInput.ToString();
+        }
+    }
+
     public void CastSpell()
     {
         string spellName = currentInput.ToString().ToUpper();
