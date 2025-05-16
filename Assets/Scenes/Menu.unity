@@ -451,8 +451,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: JOGAR
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: e58c0856f20d21e489310a2231f94be8, type: 2}
+  m_sharedMaterial: {fileID: -8554340173588639978, guid: e58c0856f20d21e489310a2231f94be8, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -476,8 +476,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 54
-  m_fontSizeBase: 54
+  m_fontSize: 142.3
+  m_fontSizeBase: 142.3
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -1133,8 +1133,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: BRUXARIA
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: e58c0856f20d21e489310a2231f94be8, type: 2}
+  m_sharedMaterial: {fileID: -8554340173588639978, guid: e58c0856f20d21e489310a2231f94be8, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1158,8 +1158,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 130.1
-  m_fontSizeBase: 130.1
+  m_fontSize: 200.9
+  m_fontSizeBase: 200.9
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
