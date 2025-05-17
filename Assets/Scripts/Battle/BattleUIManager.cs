@@ -7,7 +7,7 @@ public class BattleUIManager : MonoBehaviour
     public GameObject spellButtons;
     public GameObject parchmentButtons;
     public GameObject LogText;
-    public GameObject alfaBeto; // Objeto que contém os botões A, B, C...
+    public GameObject alfaBeto;
 
     private void Start()
     {
@@ -44,17 +44,15 @@ public class BattleUIManager : MonoBehaviour
 
     private void RandomizeLetterTexts()
     {
-        // Para cada filho direto de ALFAabeto (A, B, C...)
         for (int i = 0; i < alfaBeto.transform.childCount; i++)
         {
             Transform letraObj = alfaBeto.transform.GetChild(i);
 
-            // Procura o filho chamado "Text (TMP)" dentro de cada letra
             Transform textoTransform = letraObj.Find("Text (TMP)");
 
             if (textoTransform != null)
             {
-                // Ativa ou desativa aleatoriamente o texto
+
                 bool mostrarTexto = Random.value > 0.5f;
                 textoTransform.gameObject.SetActive(mostrarTexto);
             }
