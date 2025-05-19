@@ -28,7 +28,7 @@ public class Enemy : MonoBehaviour
                 element = data.element;
 
                 // Aplica a cor corretamente
-                spriteRenderer.color = data.color;
+                //spriteRenderer.color = data.color;
 
                 healthBar.SetHealth(health);
                 Debug.Log("Inimigo carregado: " + gameObject.name + " | Cor: " + data.color);
@@ -77,6 +77,6 @@ public class Enemy : MonoBehaviour
         if (spriteRenderer == null)
             spriteRenderer = GetComponent<SpriteRenderer>();
 
-        spriteRenderer.color = data.color; // Aplica a cor corretamente
+        //spriteRenderer.color = data.color; // Aplica a cor corretamente
     }
 }
