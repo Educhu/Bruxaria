@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using System.Collections.Generic;
+using System.Collections;
 
 public class GameManager : MonoBehaviour
 {
@@ -30,12 +31,20 @@ public class GameManager : MonoBehaviour
 
     public void StartBattle(int phase)
     {
-        if (phase <= unlockedPhase) // Apenas fases desbloqueadas podem ser acessadas
+        if (phase <= unlockedPhase)
         {
             currentPhase = phase;
             SetEnemyAttributes(phase);
-            LoadScene("Combate"); // Nome da cena de batalha
+            StartCoroutine(LoadBattleAndApply());
         }
+    }
+
+    private IEnumerator LoadBattleAndApply()
+    {
+        LoadScene("Combate");
+        yield return null; // Espera 1 frame
+        yield return new WaitForSeconds(0.1f); // Segurança extra
+        ApplyEnemyAttributes();
     }
 
     public void LoadScene(string sceneName)
@@ -79,14 +88,16 @@ public class GameManager : MonoBehaviour
         switch (phase)
         {
             case 1:
-                currentEnemyData = new EnemyData("Fogo", 100, 10, Element.Fire, Color.red);
+                currentEnemyData = new EnemyData(
+                    "Fogo", 100, 10, Element.Fire, Color.red,
+                    Resources.Load<AnimationClip>("Anims/Fire/Idle"),
+                    Resources.Load<AnimationClip>("Anims/Fire/Attack"),
+                    Resources.Load<AnimationClip>("Anims/Fire/Hit"),
+                    Resources.Load<AnimationClip>("Anims/Fire/Die")
+                );
                 break;
-            case 2:
-                currentEnemyData = new EnemyData("Água", 100, 15, Element.Water, Color.blue);
-                break;
-            case 3:
-                currentEnemyData = new EnemyData("Terra", 100, 12, Element.Earth, Color.green);
-                break;
+
+                // Repete para os demais elementos
         }
 
         ApplyEnemyAttributes();
@@ -113,14 +124,25 @@ public class EnemyData
     public int health;
     public int speed;
     public Element element;
-    public Color color; // Nova propriedade para armazenar a cor
+    public Color color;
 
-    public EnemyData(string name, int health, int speed, Element element, Color color)
+    public AnimationClip idleClip;
+    public AnimationClip attackClip;
+    public AnimationClip hitClip;
+    public AnimationClip dieClip;
+
+    public EnemyData(string name, int health, int speed, Element element, Color color,
+                     AnimationClip idle, AnimationClip attack, AnimationClip hit, AnimationClip die)
     {
         this.name = name;
         this.health = health;
         this.speed = speed;
         this.element = element;
         this.color = color;
+
+        this.idleClip = idle;
+        this.attackClip = attack;
+        this.hitClip = hit;
+        this.dieClip = die;
     }
 }

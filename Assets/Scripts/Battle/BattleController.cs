@@ -83,7 +83,7 @@ public class BattleController : MonoBehaviour
             switch (action)
             {
                 case ActionType.Attack:
-                    int damage = CalculateDamage(player.selectedElement, enemy.element);
+                    int damage = CalculateDamage(player.selectedElement, (Element)enemy.element);
                     enemy.TakeDamage(damage);
                     break;
                 case ActionType.Heal:
@@ -101,7 +101,7 @@ public class BattleController : MonoBehaviour
             {
                 case ActionType.Attack:
                     BattleLog.Instance.AddLogEntry("Ataque do inimigo com elemento: " + enemy.element);
-                    int damage = CalculateDamage(enemy.element, player.selectedElement);
+                    int damage = CalculateDamage(enemy.element, player.selectedElement); // aqui o erro
                     player.TakeDamage(damage);
                     break;
                 case ActionType.Heal:
