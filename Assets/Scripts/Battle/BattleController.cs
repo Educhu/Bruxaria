@@ -119,19 +119,34 @@ public class BattleController : MonoBehaviour
         int baseDamage = 30;
         if ((attackerElement == Element.Fire && defender == Element.Earth) ||
             (attackerElement == Element.Earth && defender == Element.Water) ||
-            (attackerElement == Element.Water && defender == Element.Fire))
+            (attackerElement == Element.Water && defender == Element.Fire) ||
+            (attackerElement == Element.Air && defender == Element.Poison) ||
+            (attackerElement == Element.Poison && defender == Element.Metal) ||
+            (attackerElement == Element.Eletric && defender == Element.Air) ||
+            (attackerElement == Element.Metal && defender == Element.Eletric))
+
+
         {
             return baseDamage + 20; // Dano aumentado
         }
         if ((attackerElement == Element.Fire && defender == Element.Water) ||
             (attackerElement == Element.Earth && defender == Element.Fire) ||
-            (attackerElement == Element.Water && defender == Element.Earth))
+            (attackerElement == Element.Water && defender == Element.Earth) ||
+            (attackerElement == Element.Air && defender == Element.Eletric) ||
+            (attackerElement == Element.Poison && defender == Element.Air) ||
+            (attackerElement == Element.Eletric && defender == Element.Metal) ||
+            (attackerElement == Element.Metal && defender == Element.Poison))
+
         {
             return baseDamage - 20; // Dano reduzido
         }
+        if ((attackerElement == Element.Amongus))
+            return baseDamage + 1000;
+
         return baseDamage; // Dano neutro
+
     }
 }
 
 public enum ActionType { Attack, Heal, SpeedBoost }
-public enum Element { Fire, Water, Earth, Air }
+public enum Element { Fire, Water, Earth, Air, Poison, Metal, Eletric, Amongus}

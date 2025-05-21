@@ -23,8 +23,12 @@ public class SpellCasting : MonoBehaviour
         spellBook.Add("AGUA", (ActionType.Attack, Element.Water));
         spellBook.Add("TERRA", (ActionType.Attack, Element.Earth));
         spellBook.Add("AR", (ActionType.Attack, Element.Air));
+        spellBook.Add("VENENO", (ActionType.Attack, Element.Poison));
+        spellBook.Add("METAL", (ActionType.Attack, Element.Metal));
+        spellBook.Add("RAIO", (ActionType.Attack, Element.Eletric));
+        spellBook.Add("A", (ActionType.Attack, Element.Amongus));
         spellBook.Add("CURA", (ActionType.Heal, Element.Air)); // Cura não tem elemento relevante
-        spellBook.Add("VELOCIDADE", (ActionType.SpeedBoost, Element.Air)); // Velocidade também não
+        //spellBook.Add("VELOCIDADE", (ActionType.SpeedBoost, Element.Air)); // Velocidade também não
     }
 
     public void AddLetter(string letter)
