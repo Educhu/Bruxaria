@@ -1,9 +1,11 @@
+using TMPro;
 using UnityEngine;
 
 public class BattleController : MonoBehaviour
 {
     public Player player;
     public Enemy enemy;
+    public Vector3 enemyPosition;
 
     public ActionType PlayerAction { get; private set; }
     public ActionType EnemyAction { get; private set; }
@@ -80,6 +82,7 @@ public class BattleController : MonoBehaviour
         {
             //Debug.Log("Elemento do jogador no momento do ataque: " + player.selectedElement);
             BattleLog.Instance.AddLogEntry("Elemento do jogador no momento do ataque: " + player.selectedElement);
+            SpellEffectManager.Instance.SpawnEffect(player.selectedElement, enemyPosition);
             switch (action)
             {
                 case ActionType.Attack:

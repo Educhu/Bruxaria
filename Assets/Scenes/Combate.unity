@@ -9020,6 +9020,57 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1418943619}
   m_CullTransparentMesh: 1
+--- !u!1 &1438156486
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1438156488}
+  - component: {fileID: 1438156487}
+  m_Layer: 0
+  m_Name: SpellEffectManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1438156487
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1438156486}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e96da3b91ec71844082b12329111fca2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fireEffect: {fileID: 2940982491631156014, guid: d0ecfbc19b5ccec42a6d71533a468bbb, type: 3}
+  waterEffect: {fileID: 5183413317768956589, guid: 169ffaa2ec6cf2b4495a907dac38ed21, type: 3}
+  earthEffect: {fileID: 3598294964130176885, guid: 010c9e6ea3009f84ca27bce3fa0fb326, type: 3}
+  airEffect: {fileID: 368952073322380839, guid: b4c6b1890b1ab15439b52c19d017e6c0, type: 3}
+  metalEffect: {fileID: 4932733916269209009, guid: 72de33066c5ddac4eaa242ffa2464e98, type: 3}
+  poisonEffect: {fileID: 8108269281147802472, guid: d02c393ab1e7de04b844195fc283c915, type: 3}
+  eletricEffect: {fileID: 3236061870925660854, guid: 3fa28477905eac14d921568de75fc770, type: 3}
+--- !u!4 &1438156488
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1438156486}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 2.6109169, y: 0.30609605, z: -0.06991603}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1438666635
 GameObject:
   m_ObjectHideFlags: 0
@@ -11534,6 +11585,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 860192397}
   enemy: {fileID: 1763030133}
+  enemyPosition: {x: 0, y: 0, z: 0}
 --- !u!4 &1707032025
 Transform:
   m_ObjectHideFlags: 0
@@ -15543,6 +15595,37 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2100755246}
   m_CullTransparentMesh: 1
+--- !u!1 &2105234980
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2105234981}
+  m_Layer: 0
+  m_Name: EffectPosition
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2105234981
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2105234980}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.27, y: 1.33, z: -0.06991603}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2133102509
 GameObject:
   m_ObjectHideFlags: 0
@@ -15779,3 +15862,5 @@ SceneRoots:
   - {fileID: 1707032025}
   - {fileID: 2133102511}
   - {fileID: 210140026}
+  - {fileID: 1438156488}
+  - {fileID: 2105234981}

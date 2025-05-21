@@ -102,7 +102,7 @@ public class Enemy : MonoBehaviour
             yield break;
 
         spriteRenderer.color = Color.red;
-        yield return new WaitForSeconds(0.2f);
+        yield return new WaitForSeconds(0.4f);
         spriteRenderer.color = originalColor;
     }
 
