@@ -969,6 +969,55 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 204487900}
   m_CullTransparentMesh: 1
+--- !u!1 &210140024
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 210140026}
+  - component: {fileID: 210140025}
+  m_Layer: 0
+  m_Name: Spawner
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &210140025
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 210140024}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d8ca9f9e7e51381449142f79ba7d7c12, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tipoDoInimigo: 0
+  enemyFogoPrefab: {fileID: 0}
+  enemyAguaPrefab: {fileID: 0}
+  enemyTerraPrefab: {fileID: 0}
+  enemyArPrefab: {fileID: 0}
+--- !u!4 &210140026
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 210140024}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 582.6391, y: 163.46777, z: -0.7963945}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &222349600
 GameObject:
   m_ObjectHideFlags: 0
@@ -11804,25 +11853,6 @@ MonoBehaviour:
   element: 0
   healthBar: {fileID: 1083626953}
   baseAnimatorController: {fileID: 9100000, guid: 7e8b15e47848149478d384f2e21db290, type: 2}
-  fireIdle: {fileID: 7400000, guid: be7d1b7265cd69147acf2eab0a6c7d20, type: 2}
-  waterIdle: {fileID: 7400000, guid: 319b1587663eebc469600118c87f8e21, type: 2}
-  earthIdle: {fileID: 7400000, guid: 89adff5a4dfa8a34c9002ed0c75babf0, type: 2}
-  airIdle: {fileID: 7400000, guid: ed1254ad322cb3044ac99c0b684c6b0d, type: 2}
-  metalIdle: {fileID: 7400000, guid: 0d8678fe5b83ca94f88fe1e0cdd45aa7, type: 2}
-  venomIdle: {fileID: 7400000, guid: eb766283b893e774396f366999074c67, type: 2}
-  rayIdle: {fileID: 7400000, guid: cf858543c234a5041ae69f24398cf111, type: 2}
-  fireAttack: {fileID: 0}
-  waterAttack: {fileID: 0}
-  earthAttack: {fileID: 0}
-  airAttack: {fileID: 0}
-  fireHit: {fileID: 0}
-  waterHit: {fileID: 0}
-  earthHit: {fileID: 0}
-  airHit: {fileID: 0}
-  fireDie: {fileID: 0}
-  waterDie: {fileID: 0}
-  earthDie: {fileID: 0}
-  airDie: {fileID: 0}
 --- !u!212 &1763030134
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -15748,3 +15778,4 @@ SceneRoots:
   - {fileID: 757470342}
   - {fileID: 1707032025}
   - {fileID: 2133102511}
+  - {fileID: 210140026}
