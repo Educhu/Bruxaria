@@ -11584,8 +11584,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 860192397}
-  enemy: {fileID: 1763030133}
+  enemies: []
   enemyPosition: {x: 0, y: 0, z: 0}
+  spellSpawnPoint: {fileID: 2105234981}
 --- !u!4 &1707032025
 Transform:
   m_ObjectHideFlags: 0
@@ -14595,7 +14596,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 822636588}
   m_Direction: 0
   m_Value: 0
-  m_Size: 1
+  m_Size: 0.9999999
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:

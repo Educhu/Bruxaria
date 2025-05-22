@@ -38,9 +38,9 @@ public class GameManager : MonoBehaviour
         enemiesByPhase.Add(new EnemyData("Água", 120, 8, Element.Water, Color.blue, 1));
         enemiesByPhase.Add(new EnemyData("Terra", 150, 6, Element.Earth, new Color(0.4f, 0.25f, 0.1f), 2));
         enemiesByPhase.Add(new EnemyData("Ar", 90, 12, Element.Air, Color.white, 3));
-        enemiesByPhase.Add(new EnemyData("Metal", 100, 10, Element.Fire, Color.red, 4));
-        enemiesByPhase.Add(new EnemyData("Veneno", 100, 10, Element.Fire, Color.red, 5));
-        enemiesByPhase.Add(new EnemyData("Raio", 100, 10, Element.Fire, Color.red, 6));
+        enemiesByPhase.Add(new EnemyData("Metal", 100, 10, Element.Metal, Color.red, 4));
+        enemiesByPhase.Add(new EnemyData("Veneno", 100, 10, Element.Poison, Color.red, 5));
+        enemiesByPhase.Add(new EnemyData("Raio", 100, 10, Element.Eletric, Color.red, 6));
     }
 
     public void StartBattle(int phase)

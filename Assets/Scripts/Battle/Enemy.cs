@@ -94,6 +94,12 @@ public class Enemy : MonoBehaviour
         StartCoroutine(FlashRed());
 
         Debug.Log("Inimigo tomou " + amount + " de dano! Vida restante: " + health);
+
+        if (health <= 0)
+        {
+            gameObject.SetActive(false);
+            BattleController.Instance.OnEnemyDefeated();
+        }
     }
 
     private IEnumerator FlashRed()

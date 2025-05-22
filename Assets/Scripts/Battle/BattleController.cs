@@ -1,43 +1,64 @@
-using TMPro;
 using UnityEngine;
+using TMPro;
 
 public class BattleController : MonoBehaviour
 {
+    public static BattleController Instance;
+
     public Player player;
-    public Enemy enemy;
+    public Enemy[] enemies; // Inimigos em ordem (2 normais + 1 boss, por exemplo)
+    private int enemyIndex = 0;
+    private Enemy currentEnemy;
+
     public Vector3 enemyPosition;
+    public Transform spellSpawnPoint;
 
     public ActionType PlayerAction { get; private set; }
     public ActionType EnemyAction { get; private set; }
 
+    private void Awake()
+    {
+        Instance = this;
+    }
 
+    private void Start()
+    {
+        if (enemies.Length > 0)
+        {
+            currentEnemy = enemies[enemyIndex];
+            currentEnemy.gameObject.SetActive(true);
+        }
+    }
+
+    public void OnSpellButtonPressed(int elementIndex)
+    {
+        Element chosenElement = (Element)elementIndex;
+        player.selectedElement = chosenElement;
+        PlayerCastsSpell(ActionType.Attack);
+    }
 
     public void PlayerCastsSpell(ActionType action)
     {
-        BattleLog.Instance.AddLogEntry("Jogador lançou feitiço: " + action);
-
-        if (action == ActionType.Attack)
+        if (currentEnemy == null)
         {
-            Debug.Log("Elemento de ataque atualizado para: " + player.selectedElement);
-            //BattleLog.Instance.AddLog("Elemento de ataque atualizado para: " + player.selectedElement);
+            Debug.LogError("currentEnemy está null! Verifique se o inimigo foi inicializado corretamente.");
+            return;
         }
 
-        PlayerAction = action;
-        GetEnemyAction();
-        ExecuteTurn();
-    }
+        BattleLog.Instance.AddLogEntry("Jogador lançou feitiço: " + action);
 
-    private void GetEnemyAction()
-    {
-        EnemyAction = enemy.ChooseAction(player); // Passa o Player para a decisão do inimigo
+        PlayerAction = action;
+        EnemyAction = currentEnemy.ChooseAction(player);
         BattleLog.Instance.AddLogEntry("Inimigo escolheu: " + EnemyAction);
+
+        ExecuteTurn();
     }
 
     private void ExecuteTurn()
     {
         BattleLog.Instance.AddLogEntry("Executando turno...");
 
-        bool playerFirst = player.speed > enemy.speed;
+        bool playerFirst = player.speed > currentEnemy.speed;
         bool enemyFirst = !playerFirst && Random.Range(0, 2) == 0;
 
         if (playerFirst)
@@ -45,17 +66,13 @@ public class BattleController : MonoBehaviour
             BattleLog.Instance.AddLogEntry("Jogador age primeiro");
             ResolveAction(PlayerAction, true);
 
-            if (enemy.health <= 0) // Inimigo derrotado
-            {
-                GameManager.Instance.BattleWon();
-                return;
-            }
+            if (currentEnemy.health <= 0) return;
         }
 
         BattleLog.Instance.AddLogEntry("Inimigo executa ação");
         ResolveAction(EnemyAction, false);
 
-        if (player.health <= 0) // Player morreu
+        if (player.health <= 0)
         {
             GameManager.Instance.GameOver();
             return;
@@ -63,14 +80,8 @@ public class BattleController : MonoBehaviour
 
         if (!playerFirst)
         {
-            BattleLog.Instance.AddLogEntry("Inimigo age primeiro");
+            BattleLog.Instance.AddLogEntry("Jogador age agora");
             ResolveAction(PlayerAction, true);
-
-            if (enemy.health <= 0) // Inimigo derrotado
-            {
-                GameManager.Instance.BattleWon();
-                return;
-            }
         }
 
         BattleLog.Instance.AddLogEntry("Turno finalizado.");
@@ -80,14 +91,14 @@ public class BattleController : MonoBehaviour
     {
         if (isPlayer)
         {
-            //Debug.Log("Elemento do jogador no momento do ataque: " + player.selectedElement);
-            BattleLog.Instance.AddLogEntry("Elemento do jogador no momento do ataque: " + player.selectedElement);
+            BattleLog.Instance.AddLogEntry("Elemento do jogador: " + player.selectedElement);
             SpellEffectManager.Instance.SpawnEffect(player.selectedElement, enemyPosition);
+
             switch (action)
             {
                 case ActionType.Attack:
-                    int damage = CalculateDamage(player.selectedElement, (Element)enemy.element);
-                    enemy.TakeDamage(damage);
+                    int damage = CalculateDamage(player.selectedElement, currentEnemy.element);
+                    currentEnemy.TakeDamage(damage);
                     break;
                 case ActionType.Heal:
                     player.IncreaseHealth(20);
@@ -103,15 +114,14 @@ public class BattleController : MonoBehaviour
             switch (action)
             {
                 case ActionType.Attack:
-                    BattleLog.Instance.AddLogEntry("Ataque do inimigo com elemento: " + enemy.element);
-                    int damage = CalculateDamage(enemy.element, player.selectedElement); // aqui o erro
+                    int damage = CalculateDamage(currentEnemy.element, player.selectedElement);
                     player.TakeDamage(damage);
                     break;
                 case ActionType.Heal:
-                    enemy.Heal(20);
+                    currentEnemy.Heal(20);
                     break;
                 case ActionType.SpeedBoost:
-                    enemy.speed += 5;
+                    currentEnemy.speed += 5;
                     break;
             }
         }
@@ -127,10 +137,8 @@ public class BattleController : MonoBehaviour
             (attackerElement == Element.Poison && defender == Element.Metal) ||
             (attackerElement == Element.Eletric && defender == Element.Air) ||
             (attackerElement == Element.Metal && defender == Element.Eletric))
-
-
         {
-            return baseDamage + 20; // Dano aumentado
+            return baseDamage + 20;
         }
         if ((attackerElement == Element.Fire && defender == Element.Water) ||
             (attackerElement == Element.Earth && defender == Element.Fire) ||
@@ -139,17 +147,30 @@ public class BattleController : MonoBehaviour
             (attackerElement == Element.Poison && defender == Element.Air) ||
             (attackerElement == Element.Eletric && defender == Element.Metal) ||
             (attackerElement == Element.Metal && defender == Element.Poison))
-
         {
-            return baseDamage - 20; // Dano reduzido
+            return baseDamage - 20;
         }
-        if ((attackerElement == Element.Amongus))
+        if (attackerElement == Element.Amongus)
             return baseDamage + 1000;
 
-        return baseDamage; // Dano neutro
+        return baseDamage;
+    }
 
+    public void OnEnemyDefeated()
+    {
+        enemyIndex++;
+        if (enemyIndex >= enemies.Length)
+        {
+            Debug.Log("Vitória! Todos os inimigos derrotados.");
+            GameManager.Instance.BattleWon();
+        }
+        else
+        {
+            Debug.Log("Próximo inimigo!");
+            currentEnemy = enemies[enemyIndex];
+            currentEnemy.gameObject.SetActive(true);
+        }
     }
 }
-
 public enum ActionType { Attack, Heal, SpeedBoost }
-public enum Element { Fire, Water, Earth, Air, Poison, Metal, Eletric, Amongus}
+public enum Element { Fire, Water, Earth, Air, Poison, Metal, Eletric, Amongus }
