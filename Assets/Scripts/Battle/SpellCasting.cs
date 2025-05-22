@@ -26,7 +26,7 @@ public class SpellCasting : MonoBehaviour
         spellBook.Add("VENENO", (ActionType.Attack, Element.Poison));
         spellBook.Add("METAL", (ActionType.Attack, Element.Metal));
         spellBook.Add("RAIO", (ActionType.Attack, Element.Eletric));
-        spellBook.Add("A", (ActionType.Attack, Element.Amongus));
+        spellBook.Add("AMONGUS", (ActionType.Attack, Element.Amongus));
         spellBook.Add("CURA", (ActionType.Heal, Element.Air)); // Cura não tem elemento relevante
         //spellBook.Add("VELOCIDADE", (ActionType.SpeedBoost, Element.Air)); // Velocidade também não
     }
@@ -49,7 +49,7 @@ public class SpellCasting : MonoBehaviour
 
         if (spellBook.ContainsKey(spellName))
         {
-            BattleLog.Instance.AddLogEntry("Feitiço lançado: " + spellName);
+            //BattleLog.Instance.AddLogEntry("Feitiço lançado: " + spellName);
 
             var (actionType, spellElement) = spellBook[spellName]; // Obtém ação e elemento
 
@@ -70,7 +70,7 @@ public class SpellCasting : MonoBehaviour
         }
         else
         {
-            BattleLog.Instance.AddLogEntry("Nenhum feitiço encontrado!");
+            //BattleLog.Instance.AddLogEntry("Nenhum feitiço encontrado!");
         }
 
         currentInput.Clear();

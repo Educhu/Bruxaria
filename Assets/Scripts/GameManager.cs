@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
@@ -15,6 +16,8 @@ public class GameManager : MonoBehaviour
 
     public EnemyData currentEnemyData;
     public List<EnemyData> enemiesByPhase = new List<EnemyData>();
+
+    public Image fadeImage; // referencie o Image do painel preto no Inspector
 
     private void Awake()
     {
@@ -30,17 +33,89 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public void LoadSceneWithFade(string sceneName)
+    {
+        StartCoroutine(FadeAndLoadScene(sceneName));
+    }
+
+    private IEnumerator FadeAndLoadScene(string sceneName)
+    {
+        // Primeiro ativa ou encontra o painel de fade da cena atual
+        Image currentFadeImage = GetFadeImageInScene();
+
+        if (currentFadeImage != null)
+        {
+            currentFadeImage.gameObject.SetActive(true);
+
+            // Fade in (alpha de 0 -> 1)
+            float duration = 1f;
+            float t = 0f;
+            Color color = currentFadeImage.color;
+
+            while (t < duration)
+            {
+                t += Time.deltaTime;
+                color.a = Mathf.Lerp(0f, 1f, t / duration);
+                currentFadeImage.color = color;
+                yield return null;
+            }
+        }
+
+        yield return new WaitForSeconds(2f); // tempo antes da troca de cena
+
+        // Carrega a nova cena
+        SceneManager.LoadScene(sceneName);
+
+        // Aguarda 1 frame para garantir que a nova cena carregou
+        yield return null;
+
+        // Agora procura o novo painel de fade na nova cena e faz fade out (opcional)
+        Image newFadeImage = GetFadeImageInScene();
+        if (newFadeImage != null)
+        {
+            newFadeImage.gameObject.SetActive(true);
+            Color color = newFadeImage.color;
+            color.a = 1f;
+            newFadeImage.color = color;
+
+            // Fade out (alpha de 1 -> 0)
+            float duration = 1f;
+            float t = 0f;
+            while (t < duration)
+            {
+                t += Time.deltaTime;
+                color.a = Mathf.Lerp(1f, 0f, t / duration);
+                newFadeImage.color = color;
+                yield return null;
+            }
+
+            newFadeImage.gameObject.SetActive(false);
+        }
+    }
+
+    private Image GetFadeImageInScene()
+    {
+        GameObject fadeObj = GameObject.FindGameObjectWithTag("Fade");
+        if (fadeObj != null)
+        {
+            return fadeObj.GetComponent<Image>();
+        }
+
+        Debug.LogWarning("FadePanel com tag 'Fade' não encontrado na cena.");
+        return null;
+    }
+
     private void InitializeEnemies()
     {
         enemiesByPhase.Clear();
 
         enemiesByPhase.Add(new EnemyData("Fogo", 100, 10, Element.Fire, Color.red, 0));
-        enemiesByPhase.Add(new EnemyData("Água", 120, 8, Element.Water, Color.blue, 1));
-        enemiesByPhase.Add(new EnemyData("Terra", 150, 6, Element.Earth, new Color(0.4f, 0.25f, 0.1f), 2));
-        enemiesByPhase.Add(new EnemyData("Ar", 90, 12, Element.Air, Color.white, 3));
-        enemiesByPhase.Add(new EnemyData("Metal", 100, 10, Element.Fire, Color.red, 4));
-        enemiesByPhase.Add(new EnemyData("Veneno", 100, 10, Element.Fire, Color.red, 5));
-        enemiesByPhase.Add(new EnemyData("Raio", 100, 10, Element.Fire, Color.red, 6));
+        enemiesByPhase.Add(new EnemyData("Água", 120, 10, Element.Water, Color.blue, 1));
+        //enemiesByPhase.Add(new EnemyData("Terra", 150, 6, Element.Earth, new Color(0.4f, 0.25f, 0.1f), 2));
+        enemiesByPhase.Add(new EnemyData("Ar", 90, 10, Element.Air, Color.white, 3));
+        enemiesByPhase.Add(new EnemyData("Metal", 100, 10, Element.Metal, Color.red, 4));
+        enemiesByPhase.Add(new EnemyData("Veneno", 100, 10, Element.Poison, Color.red, 5));
+        enemiesByPhase.Add(new EnemyData("Raio", 100, 10, Element.Eletric, Color.red, 6));
     }
 
     public void StartBattle(int phase)
@@ -69,7 +144,7 @@ public class GameManager : MonoBehaviour
     public void GameOver()
     {
         Debug.Log("Game Over! Carregando cena de morte...");
-        LoadScene("GameOver");
+        LoadSceneWithFade("GameOver");
     }
 
     public void TryAgain()
@@ -85,7 +160,7 @@ public class GameManager : MonoBehaviour
         }
 
         Debug.Log("Batalha vencida! Retornando ao mapa...");
-        LoadScene("Fases");
+        LoadSceneWithFade("Fases");
     }
 
     private void SetEnemyAttributes(int phase)

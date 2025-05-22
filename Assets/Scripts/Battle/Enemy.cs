@@ -77,8 +77,8 @@ public class Enemy : MonoBehaviour
 
         if (health <= 30 && rand < 50)
             return ActionType.Heal;
-        else if (speed < player.speed && rand < 70)
-            return ActionType.SpeedBoost;
+        //else if (speed < player.speed && rand < 70)
+        //    return ActionType.SpeedBoost;
 
         return ActionType.Attack;
     }

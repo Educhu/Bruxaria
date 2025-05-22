@@ -14,7 +14,7 @@ public class BattleController : MonoBehaviour
 
     public void PlayerCastsSpell(ActionType action)
     {
-        BattleLog.Instance.AddLogEntry("Jogador lançou feitiço: " + action);
+        //BattleLog.Instance.AddLogEntry("Jogador lançou feitiço: " + action);
 
         if (action == ActionType.Attack)
         {
@@ -30,19 +30,19 @@ public class BattleController : MonoBehaviour
     private void GetEnemyAction()
     {
         EnemyAction = enemy.ChooseAction(player); // Passa o Player para a decisão do inimigo
-        BattleLog.Instance.AddLogEntry("Inimigo escolheu: " + EnemyAction);
+        //BattleLog.Instance.AddLogEntry("Inimigo escolheu: " + EnemyAction);
     }
 
     private void ExecuteTurn()
     {
-        BattleLog.Instance.AddLogEntry("Executando turno...");
+        //BattleLog.Instance.AddLogEntry("Executando turno...");
 
         bool playerFirst = player.speed > enemy.speed;
         bool enemyFirst = !playerFirst && Random.Range(0, 2) == 0;
 
         if (playerFirst)
         {
-            BattleLog.Instance.AddLogEntry("Jogador age primeiro");
+            //BattleLog.Instance.AddLogEntry("Jogador age primeiro");
             ResolveAction(PlayerAction, true);
 
             if (enemy.health <= 0) // Inimigo derrotado
@@ -52,7 +52,7 @@ public class BattleController : MonoBehaviour
             }
         }
 
-        BattleLog.Instance.AddLogEntry("Inimigo executa ação");
+        //BattleLog.Instance.AddLogEntry("Inimigo executa ação");
         ResolveAction(EnemyAction, false);
 
         if (player.health <= 0) // Player morreu
@@ -63,7 +63,7 @@ public class BattleController : MonoBehaviour
 
         if (!playerFirst)
         {
-            BattleLog.Instance.AddLogEntry("Inimigo age primeiro");
+            //BattleLog.Instance.AddLogEntry("Inimigo age primeiro");
             ResolveAction(PlayerAction, true);
 
             if (enemy.health <= 0) // Inimigo derrotado
@@ -73,7 +73,7 @@ public class BattleController : MonoBehaviour
             }
         }
 
-        BattleLog.Instance.AddLogEntry("Turno finalizado.");
+        //BattleLog.Instance.AddLogEntry("Turno finalizado.");
     }
 
     private void ResolveAction(ActionType action, bool isPlayer)
@@ -81,7 +81,7 @@ public class BattleController : MonoBehaviour
         if (isPlayer)
         {
             //Debug.Log("Elemento do jogador no momento do ataque: " + player.selectedElement);
-            BattleLog.Instance.AddLogEntry("Elemento do jogador no momento do ataque: " + player.selectedElement);
+            //BattleLog.Instance.AddLogEntry("Elemento do jogador no momento do ataque: " + player.selectedElement);
             SpellEffectManager.Instance.SpawnEffect(player.selectedElement, enemyPosition);
             switch (action)
             {
@@ -90,29 +90,29 @@ public class BattleController : MonoBehaviour
                     enemy.TakeDamage(damage);
                     break;
                 case ActionType.Heal:
-                    player.IncreaseHealth(20);
+                    player.IncreaseHealth(40);
                     break;
-                case ActionType.SpeedBoost:
-                    player.IncreaseSpeed(5);
-                    break;
+                //case ActionType.SpeedBoost:
+                //    player.IncreaseSpeed(5);
+                //    break;
             }
         }
         else
         {
-            BattleLog.Instance.AddLogEntry("Ação do inimigo: " + action);
+            //BattleLog.Instance.AddLogEntry("Ação do inimigo: " + action);
             switch (action)
             {
                 case ActionType.Attack:
-                    BattleLog.Instance.AddLogEntry("Ataque do inimigo com elemento: " + enemy.element);
+                    //BattleLog.Instance.AddLogEntry("Ataque do inimigo com elemento: " + enemy.element);
                     int damage = CalculateDamage(enemy.element, player.selectedElement); // aqui o erro
                     player.TakeDamage(damage);
                     break;
                 case ActionType.Heal:
-                    enemy.Heal(20);
+                    enemy.Heal(40);
                     break;
-                case ActionType.SpeedBoost:
-                    enemy.speed += 5;
-                    break;
+                //case ActionType.SpeedBoost:
+                //    enemy.speed += 5;
+                //    break;
             }
         }
     }

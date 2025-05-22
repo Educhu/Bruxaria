@@ -1,3 +1,5 @@
+using System.Collections;
+using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -11,9 +13,16 @@ public class Player : MonoBehaviour
 
     public HealthBar healthBar; // Referência para a barra de vida
 
+    private SpriteRenderer spriteRenderer;
+    private Color originalColor;
+
     private void Start()
     {
         healthBar.SetMaxHealth(maxHealth);
+
+        spriteRenderer = GetComponentInChildren<SpriteRenderer>();
+        if (spriteRenderer != null)
+            originalColor = spriteRenderer.color;
     }
 
     public void SetSelectedElement(Element newElement)
@@ -34,8 +43,12 @@ public class Player : MonoBehaviour
     {
         health -= amount;
         if (health < 0) health = 0;
+
         healthBar.SetHealth(health);
+
         Debug.Log("Player tomou " + amount + " de dano! Vida restante: " + health);
+
+        StartCoroutine(FlashRed());
     }
 
     public void IncreaseHealth(int amount)
@@ -63,6 +76,16 @@ public class Player : MonoBehaviour
         }
 
         battleController.PlayerCastsSpell(action);
+    }
+
+    private IEnumerator FlashRed()
+    {
+        if (spriteRenderer == null)
+            yield break;
+
+        spriteRenderer.color = Color.red;
+        yield return new WaitForSeconds(0.4f);
+        spriteRenderer.color = originalColor;
     }
 
 }

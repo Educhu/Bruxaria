@@ -10,3 +10,12 @@
 15	1158	7654108017860156	GameActivity/CMakeFiles/game.dir/UGAInput.cpp.o	20925c212d64a9fa
 6	1220	7654108018498063	GameActivity/CMakeFiles/game.dir/UGAApplication.cpp.o	2400990672537db3
 1220	1297	7654108019291089	C:/Users/T-GAMER/Projetos/Bruxaria/Bruxaria/Library/Bee/Android/Prj/IL2CPP/Gradle/unityLibrary/build/intermediates/cxx/RelWithDebInfo/1u55574h/obj/arm64-v8a/libgame.so	7fe6acd839202a19
+13	1372	7696478797926548	GameActivity/CMakeFiles/game.dir/UGAConfiguration.cpp.o	3e62a0791130d42d
+31	1375	7696478797946553	GameActivity/CMakeFiles/game.dir/UGAInputKeyEvent.cpp.o	dee85a992a54011b
+38	1376	7696478798056583	GameActivity/CMakeFiles/game.dir/UGAInputMotionEvent.cpp.o	a6df9335cdb761b5
+21	1376	7696478797926548	GameActivity/CMakeFiles/game.dir/UGAEntry.cpp.o	b38243bcafe6b04f
+46	1387	7696478798492209	GameActivity/CMakeFiles/game.dir/UGASoftKeyboard.cpp.o	1e1f772d2570a683
+17	1580	7696478800299596	GameActivity/CMakeFiles/game.dir/UGADebug.cpp.o	cec0708e0b63ef60
+25	1821	7696478802834610	GameActivity/CMakeFiles/game.dir/UGAInput.cpp.o	20925c212d64a9fa
+9	2036	7696478804818206	GameActivity/CMakeFiles/game.dir/UGAApplication.cpp.o	2400990672537db3
+2036	2558	7696478810213178	C:/Users/T-GAMER/Projetos/Bruxaria/Bruxaria/Library/Bee/Android/Prj/IL2CPP/Gradle/unityLibrary/build/intermediates/cxx/RelWithDebInfo/1u55574h/obj/arm64-v8a/libgame.so	7fe6acd839202a19
