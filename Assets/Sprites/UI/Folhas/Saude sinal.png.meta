@@ -212,7 +212,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Saude sinal_0: 7359398821274421259
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

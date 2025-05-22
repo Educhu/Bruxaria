@@ -212,7 +212,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      FolhaTerremoto_0: -1214254890935185803
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

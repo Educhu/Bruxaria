@@ -212,7 +212,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      FERRO SINAL_0: -136536658285156118
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

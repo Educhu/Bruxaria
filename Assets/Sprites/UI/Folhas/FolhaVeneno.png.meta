@@ -212,7 +212,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      FolhaVeneno_0: -387389945859183519
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

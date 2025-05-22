@@ -212,7 +212,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      ventu_0: 4174514795134115907
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -212,7 +212,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      terremotosinal_0: -1520103049024933565
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

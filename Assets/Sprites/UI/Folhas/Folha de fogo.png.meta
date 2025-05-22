@@ -212,7 +212,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Folha de fogo_0: -3115394813727678371
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

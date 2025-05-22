@@ -212,7 +212,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      VENENOSINAL_0: -3155308850546905553
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

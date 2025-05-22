@@ -998,11 +998,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d8ca9f9e7e51381449142f79ba7d7c12, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tipoDoInimigo: 0
-  enemyFogoPrefab: {fileID: 0}
-  enemyAguaPrefab: {fileID: 0}
-  enemyTerraPrefab: {fileID: 0}
-  enemyArPrefab: {fileID: 0}
 --- !u!4 &210140026
 Transform:
   m_ObjectHideFlags: 0
@@ -11584,7 +11579,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 860192397}
-  enemies: []
+  enemies:
+  - {fileID: 1763030133}
+  - {fileID: 1763030133}
+  - {fileID: 1763030133}
+  - {fileID: 1763030133}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   enemyPosition: {x: 0, y: 0, z: 0}
   spellSpawnPoint: {fileID: 2105234981}
 --- !u!4 &1707032025
@@ -14596,7 +14598,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 822636588}
   m_Direction: 0
   m_Value: 0
-  m_Size: 0.9999999
+  m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:

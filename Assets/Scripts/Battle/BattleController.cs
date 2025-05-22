@@ -23,10 +23,16 @@ public class BattleController : MonoBehaviour
 
     private void Start()
     {
-        if (enemies.Length > 0)
+        //if (enemies.Length > 0)
+        //{
+        //    //isso faz sentido? não é melhor pegar a lista do GameManager?
+        //    currentEnemy = enemies[enemyIndex];
+        //    currentEnemy.gameObject.SetActive(true);
+        //}
+
+        for (int i = 0; i < enemies.Length; i++)
         {
-            currentEnemy = enemies[enemyIndex];
-            currentEnemy.gameObject.SetActive(true);
+            enemies[i].SetAttributes(GameManager.Instance.enemiesByPhase[i]);
         }
     }
 
@@ -41,7 +47,7 @@ public class BattleController : MonoBehaviour
     {
         if (currentEnemy == null)
         {
-            Debug.LogError("currentEnemy está null! Verifique se o inimigo foi inicializado corretamente.");
+            Debug.LogError("currentEnemy está null! Verifique se o inimigo foi inicializado corretamente."); // está aparecendo esse aviso
             return;
         }
 
