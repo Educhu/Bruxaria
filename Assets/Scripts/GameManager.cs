@@ -22,7 +22,7 @@ public class GameManager : MonoBehaviour
         {
             Instance = this;
             DontDestroyOnLoad(gameObject);
-            InitializeEnemies();// aqui devia encher a lista mas aparentemente não está enchando
+            InitializeEnemies(); // Preenche a lista
         }
         else
         {
@@ -34,7 +34,6 @@ public class GameManager : MonoBehaviour
     {
         enemiesByPhase.Clear();
 
-        //aqui que estão os valores dos enemys:
         enemiesByPhase.Add(new EnemyData("Fogo", 100, 10, Element.Fire, Color.red, 0));
         enemiesByPhase.Add(new EnemyData("Água", 120, 8, Element.Water, Color.blue, 1));
         enemiesByPhase.Add(new EnemyData("Terra", 150, 6, Element.Earth, new Color(0.4f, 0.25f, 0.1f), 2));

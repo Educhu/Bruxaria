@@ -6,7 +6,7 @@ public class BattleController : MonoBehaviour
     public static BattleController Instance;
 
     public Player player;
-    public Enemy[] enemies; // Inimigos em ordem (2 normais + 1 boss, por exemplo)
+    public Enemy[] enemies; // Esses são os inimigos já posicionados manualmente na cena (arrastados no Inspector)
     private int enemyIndex = 0;
     private Enemy currentEnemy;
 
@@ -23,17 +23,23 @@ public class BattleController : MonoBehaviour
 
     private void Start()
     {
-        //if (enemies.Length > 0)
-        //{
-        //    //isso faz sentido? não é melhor pegar a lista do GameManager?
-        //    currentEnemy = enemies[enemyIndex];
-        //    currentEnemy.gameObject.SetActive(true);
-        //}
+        // Pega a lista de EnemyData que o GameManager preparou com base na fase
+        var dataList = GameManager.Instance.enemiesByPhase;
 
+        if (dataList.Count != enemies.Length)
+        {
+            Debug.LogError("Quantidade de EnemyData e Enemy na cena não coincidem!");
+            return;
+        }
+
+        // Atribui os dados para cada inimigo manual da cena
         for (int i = 0; i < enemies.Length; i++)
         {
-            enemies[i].SetAttributes(GameManager.Instance.enemiesByPhase[i]);
+            enemies[i].SetAttributes(dataList[i]);
+            enemies[i].gameObject.SetActive(i == 0); // Só ativa o primeiro inimigo no início
         }
+
+        currentEnemy = enemies[enemyIndex];
     }
 
     public void OnSpellButtonPressed(int elementIndex)
@@ -47,7 +53,7 @@ public class BattleController : MonoBehaviour
     {
         if (currentEnemy == null)
         {
-            Debug.LogError("currentEnemy está null! Verifique se o inimigo foi inicializado corretamente."); // está aparecendo esse aviso
+            Debug.LogError("currentEnemy está null! Verifique se o inimigo foi inicializado corretamente.");
             return;
         }
 
@@ -133,30 +139,33 @@ public class BattleController : MonoBehaviour
         }
     }
 
-    private int CalculateDamage(Element attackerElement, Element defender)
+    private int CalculateDamage(Element attacker, Element defender)
     {
         int baseDamage = 30;
-        if ((attackerElement == Element.Fire && defender == Element.Earth) ||
-            (attackerElement == Element.Earth && defender == Element.Water) ||
-            (attackerElement == Element.Water && defender == Element.Fire) ||
-            (attackerElement == Element.Air && defender == Element.Poison) ||
-            (attackerElement == Element.Poison && defender == Element.Metal) ||
-            (attackerElement == Element.Eletric && defender == Element.Air) ||
-            (attackerElement == Element.Metal && defender == Element.Eletric))
+
+        if ((attacker == Element.Fire && defender == Element.Earth) ||
+            (attacker == Element.Earth && defender == Element.Water) ||
+            (attacker == Element.Water && defender == Element.Fire) ||
+            (attacker == Element.Air && defender == Element.Poison) ||
+            (attacker == Element.Poison && defender == Element.Metal) ||
+            (attacker == Element.Eletric && defender == Element.Air) ||
+            (attacker == Element.Metal && defender == Element.Eletric))
         {
             return baseDamage + 20;
         }
-        if ((attackerElement == Element.Fire && defender == Element.Water) ||
-            (attackerElement == Element.Earth && defender == Element.Fire) ||
-            (attackerElement == Element.Water && defender == Element.Earth) ||
-            (attackerElement == Element.Air && defender == Element.Eletric) ||
-            (attackerElement == Element.Poison && defender == Element.Air) ||
-            (attackerElement == Element.Eletric && defender == Element.Metal) ||
-            (attackerElement == Element.Metal && defender == Element.Poison))
+
+        if ((attacker == Element.Fire && defender == Element.Water) ||
+            (attacker == Element.Earth && defender == Element.Fire) ||
+            (attacker == Element.Water && defender == Element.Earth) ||
+            (attacker == Element.Air && defender == Element.Eletric) ||
+            (attacker == Element.Poison && defender == Element.Air) ||
+            (attacker == Element.Eletric && defender == Element.Metal) ||
+            (attacker == Element.Metal && defender == Element.Poison))
         {
             return baseDamage - 20;
         }
-        if (attackerElement == Element.Amongus)
+
+        if (attacker == Element.Amongus)
             return baseDamage + 1000;
 
         return baseDamage;
